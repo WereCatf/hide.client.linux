@@ -141,7 +141,11 @@ host:
   Required when the configuration file does not contain it
 ```
 The hostname of a hide.me REST endpoint may be specified as a fully qualified domain name (nl.hide.me), short name (nl)
-or an IP address. There's no guarantee that the REST endpoint will match a WireGuard endpoint.
+or an IP address, or "any" can be used to allow the client to connect to a random hide.me endpoint. There's no 
+guarantee that the REST endpoint will match a WireGuard endpoint.
+
+To quickly force the client to disconnect and reconnect without having to restart the entire client, one can send it a 
+SIGUSR1 signal.
 
 ### Options
 ```
