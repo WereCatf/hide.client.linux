@@ -74,11 +74,11 @@ func main() {
 	}
 	
 	signalChannel := make ( chan os.Signal )																								// Signal handling
-	signal.Notify( signalChannel, syscall.SIGINT, syscall.SIGTERM, syscall.SIGKILL, syscall.SIGUSR1 )
+	signal.Notify( signalChannel, syscall.SIGINT, syscall.SIGTERM, syscall.SIGKILL, syscall.SIGUSR1, syscall.SIGQUIT )
 	
 	for sig := range signalChannel {
 		switch sig {
-			case syscall.SIGINT, syscall.SIGTERM:
+			case syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT:
 				if c != nil { c.Disconnect(); c.Shutdown() }
 				if controlServer != nil { controlServer.Shutdown() }
 				return
