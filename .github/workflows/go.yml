@@ -35,6 +35,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }} # A default variable that allows adding files to Release
         goos: ${{ matrix.goos }}
         goarch: ${{ matrix.goarch }}
+        pre_command: export CGO_ENABLED=0 # Build statically linked binaries
         goversion: 1.21.1 # You can specify the version of Golang to use for compilation
         binary_name: "hide.me" # You can specify the name of the binary
         extra_files: hide.me@.service CA.pem install.sh uninstall.sh README.md LICENSE.md
